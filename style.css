@@ -1,1 +1,148 @@
-/*# sourceMappingURL=style.css.map */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 2% 10%;
+}
+.container header {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 25px;
+}
+.container hr {
+  border-collapse: collapse;
+}
+.container .main-background {
+  border-radius: 1%;
+  margin: 3% auto;
+  background-color: #006266;
+  align-items: center;
+  height: 550px;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2%;
+  padding: 0 2%;
+}
+.container .main-background .elevator-body {
+  z-index: 2;
+  height: 450px;
+  background-color: #B1E2FF;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -40px;
+}
+.container .main-background .elevator-body .elevator-body-part {
+  width: 100%;
+  height: 450px;
+  padding: 16px 20% 3px;
+}
+.container .main-background .elevator-body .elevator-body-part .elevator {
+  display: grid;
+  grid-template-rows: repeat(5, 0.9fr);
+  background-color: gray;
+  text-align: center;
+  font-weight: bold;
+}
+.container .main-background .elevator-body .switch {
+  margin: auto;
+}
+.container .main-background .elevator-number {
+  height: 450px;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+}
+.container .main-background .elevator-number .number-body {
+  display: flex;
+}
+.container .main-background .elevator-number .number-body .number, .container .main-background .elevator-number .number-body .up, .container .main-background .elevator-number .number-body .down {
+  box-sizing: border-box;
+  height: 35px;
+  width: 35px;
+  color: white;
+  background-color: black;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 7px;
+  margin: 5px;
+  font-size: 20px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  padding: 2px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border: 2px solid gray;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: -1px;
+  bottom: 3.5px;
+  background-color: gray;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #0d6efd;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.hidden {
+  opacity: 0;
+  height: 87px;
+  transition: height 3s ease-in;
+}
+
+.show {
+  opacity: 1;
+  height: 87px;
+  transition: height 3s ease-out;
+}
+
+button:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */
