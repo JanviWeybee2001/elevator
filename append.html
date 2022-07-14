@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator by JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>Elevator System
+        </header>
+        <hr>
+        <div class="main-background"></div>
+    </div>
+    <script>
+        let main_background = document.querySelector('.main-background');
+
+        let elevators = [1, 2, 3];
+        let nodes = elevators.map(elevator => {
+            console.log(elevator);
+            let elevator_body = document.createElement('div');
+            elevator_body.classList.add('elevator-body');
+            let elevator_body_part = document.createElement('div');
+            elevator_body_part.classList.add('elevator-body-part');
+            let index = [5, 4, 3, 2];
+            let allElevator = index.map(i => {
+                let everyElevator = document.createElement('div');
+                everyElevator.classList.add('elevator', 'hidden');
+                everyElevator.setAttribute('id', `elevator-${elevator}-${i}`);
+                everyElevator.textContent = i;
+                elevator_body_part.appendChild(everyElevator);
+            });
+            let firstElevator = document.createElement('div');
+            firstElevator.classList.add('elevator', 'show');
+            firstElevator.setAttribute('id', `elevator-${elevator}-1`);
+            firstElevator.textContent = 1;
+            elevator_body_part.appendChild(firstElevator);
+            elevator_body.append(elevator_body_part);
+
+            let switches = document.createElement('label');
+            switches.classList.add('switch');
+            let check = document.createElement('input');
+            check.setAttribute('type', 'checkbox');
+            check.setAttribute('id', elevator);
+            check.setAttribute('onclick', `checkElevator(${elevator})`);
+            let slider = document.createElement('span');
+            slider.classList.add('slider', 'round');
+            switches.append(check);
+            switches.append(slider);
+            elevator_body.append(switches);
+            console.log(elevator_body_part);
+            console.log(switches);
+            console.log(elevator_body);
+            return elevator_body;
+        });
+
+
+        let elevator_number = document.createElement('div');
+        elevator_number.classList.add('elevator-number');
+        let number_body = document.createElement('div');
+        number_body.classList.add('number-body');
+        let fifthNumber = document.createElement('div');
+        fifthNumber.textContent = 5;
+        fifthNumber.classList.add('number');
+        let updiv = document.createElement('div');
+        updiv.classList.add('up');
+        updiv.style.cssText = 'height: 0; width: 0;';
+        let downFifth = document.createElement('button');
+        downFifth.style.cssText = 'margin-left: -5px;';
+        downFifth.classList.add('down');
+        downFifth.setAttribute('id', 'down-5');
+        downFifth.setAttribute('onclick', 'floor(id)');
+        downFifth.innerHTML = '<i class="fa-solid fa-caret-down"></i>';
+
+        number_body.appendChild(fifthNumber);
+        number_body.appendChild(updiv);
+        number_body.appendChild(downFifth);
+        elevator_number.appendChild(number_body);
+
+        let numbers = [4, 3, 2];
+        let number = numbers.map(num => {
+            let number_body = document.createElement('div');
+            number_body.classList.add('number-body');
+            let number_div = document.createElement('div');
+            number_div.textContent = num;
+            number_div.classList.add('number');
+            let up = document.createElement('button');
+            up.classList.add('up');
+            up.setAttribute('id', `up-${num}`);
+            up.setAttribute('onclick', 'floor(id)');
+            up.innerHTML = '<i class="fa-solid fa-caret-up"></i>';
+            let down = document.createElement('button');
+            down.classList.add('down');
+            down.setAttribute('id', `down-${num}`);
+            down.setAttribute('onclick', 'floor(id)');
+            down.innerHTML = '<i class="fa-solid fa-caret-up"></i>';
+            number_body.appendChild(number_div);
+            number_body.appendChild(up);
+            number_body.appendChild(down);
+            return number_body;
+        });
+        elevator_number.append(...number);
+
+        number_body = document.createElement('div');
+        number_body.classList.add('number-body');
+        let number_div = document.createElement('div');
+        number_div.textContent = 1;
+        number_div.classList.add('number');
+        let up = document.createElement('button');
+        up.classList.add('up');
+        up.setAttribute('id', `up-1`);
+        up.setAttribute('onclick', 'floor(id)');
+        up.innerHTML = '<i class="fa-solid fa-caret-up"></i>';
+        number_body.appendChild(number_div);
+        number_body.appendChild(up);
+
+        elevator_number.appendChild(number_body);
+
+        main_background.append(...nodes);
+        main_background.appendChild(elevator_number);
+        console.log(nodes);
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+<!-- 
+
+<ul id="app">
+    <li>JavaScript</li>
+</ul>
+
+let app = document.querySelector('#app');
+
+let langs = ['TypeScript','HTML','CSS'];
+
+let nodes = langs.map(lang => {
+    let li = document.createElement('li');
+    li.textContent = lang;
+    return li;
+});
+
+app.append(...nodes); 
+
+var div = document.createElement("div");
+div.style.cssText = "someCssStyle";
+
+document.body.appendChild(div);
+
+-->

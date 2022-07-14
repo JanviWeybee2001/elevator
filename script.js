@@ -5,39 +5,51 @@ const elevatorArray = [
     { id: 3, active: false, elevatorOn: 1 }
 ];
 
-console.log("slider".toUpperCase());
+// console.log("slider".toUpperCase());
 
 const MAIN_BACKGROUND = document.querySelector('.main-background');
-const ELEVATOR_BODY = document.createElement('div');
-const ELEVATOR_BODY_PART = document.createElement('div');
-const ELEVATOR = document.createElement('div');
-const SWITCH = document.createElement('label');
-const CHECKBOX = document.createElement('input');
-const SLIDER = document.createElement('span');
-// MAIN_BACKGROUND.appendChild()
+
 
 const floor = id => {
     let floorButton = Number(id.slice(-1));
     let minimumDistance = elevatorArray.map(elevator => Math.abs(elevator.elevatorOn - floorButton));
     let num = minimumDistance.indexOf(Math.min(...minimumDistance));
+    let index = elevatorArray.map(elevator => elevator.id).indexOf(elevatorArray[num].id);
 
-    let workingElevator = document.getElementById(`elevator-${num + 1}-${floorButton}`);
-    let workingElevatorOn = document.getElementById(`elevator-${num + 1}-${elevatorArray[num].elevatorOn}`);
+    let workingElevator = document.getElementById(`elevator-${elevatorArray[num].id}-${floorButton}`);
+    let workingElevatorOn = document.getElementById(`elevator-${elevatorArray[num].id}-${elevatorArray[index].elevatorOn}`);
 
     workingElevatorOn.classList.toggle('hidden');
     workingElevatorOn.classList.toggle('show');
     workingElevator.classList.toggle('hidden');
     workingElevator.classList.toggle('show');
-
-    elevatorArray[num].elevatorOn = floorButton;
+    elevatorArray[index].elevatorOn = floorButton;
 }
 
-// const checkElevator = elevatorId => {
-//     let elevator = document.getElementById(elevatorId);
-//     elevatorArray[elevatorId - 1].active = elevator.checked;
-//     elevatorArray.splice(elevatorArray.map(elevator => elevator.id).indexOf(elevatorId), 1);
-//     console.log(elevatorArray);
-// }
+const checkElevator = elevatorId => {
+    let elevator = document.getElementById(elevatorId);
+    let index = elevatorArray.map(elevator => elevator.id).indexOf(elevatorId);
+    console.log(index);
+
+    if (elevator.checked) {
+        elevatorArray[index].active = elevator.checked;
+        let workingElevator = document.getElementById(`elevator-${elevatorArray[index].id}-1`);
+        let workingElevatorOn = document.getElementById(`elevator-${elevatorArray[index].id}-${elevatorArray[index].elevatorOn}`);
+
+        workingElevator.style.border = "1px solid red";
+        workingElevatorOn.classList.toggle('hidden');
+        workingElevatorOn.classList.toggle('show');
+        workingElevator.classList.toggle('hidden');
+        workingElevator.classList.toggle('show');
+
+        elevatorArray.splice(index, 1);
+    }
+    else {
+        elevatorArray.push({ id: elevatorId, active: false, elevatorOn: 1 });
+        let workingElevator = document.getElementById(`elevator-${elevatorId}-${elevatorArray[elevatorArray.map(elevator => elevator.id).indexOf(elevatorId)].elevatorOn}`);
+        workingElevator.style.border = "none";
+    }
+}
 
 
 

@@ -49,6 +49,7 @@ body {
   margin: auto;
 }
 .container .main-background .elevator-number {
+  padding-top: 42px;
   height: 450px;
   display: grid;
   grid-template-rows: repeat(5, 1fr);
@@ -67,6 +68,12 @@ body {
   padding-top: 7px;
   margin: 5px;
   font-size: 20px;
+}
+.container .main-background .elevator-number .maintance {
+  z-index: 5;
+  color: white;
+  font-size: 23px;
+  text-align: center;
 }
 
 /* The switch - the box around the slider */
@@ -133,8 +140,6 @@ input:checked + .slider:before {
 
 .hidden {
   opacity: 0;
-  height: 87px;
-  transition: height 3s ease-in;
 }
 
 .show {
